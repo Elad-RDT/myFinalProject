@@ -5,6 +5,7 @@ import NavBar from './navbar';
 import { height } from '@mui/system';
 import { useNavigate } from 'react-router-dom';
 import img3 from './images/looking2.jpg'
+import { Link } from 'react-router-dom';
 
 
 
@@ -21,16 +22,20 @@ const HomepageApp = () => {
  
 
     return (
+      <div style={{ overflowY:"hidden"}}>
 
-        <div 
-        style={{     backgroundSize: 'cover',
+      
+      {localStorage.length > 0 ? (
+      <div 
+      style={{     backgroundSize: 'cover',
         backgroundPosition: 'center center',
         backgroundAttachment: 'fixed',
         backgroundImage:`url(${img3})`,
         marginTop:'-10vh',
         paddingTop:'5vh',
-        height: '1000vh',
-        display:'flex'
+        height: '110vh',
+        display:'flex',
+       
      }}
          id="father">
         <div style={{ display: 'flex', marginTop:"10vh", width:"100vw"}}>
@@ -79,8 +84,16 @@ const HomepageApp = () => {
           </form>
         )}
       </div>
-      
                 </div>
+                ) : (
+                  <div style={{ display:"flex", justifyContent:"right", marginTop:"10%", marginRight:"15%"}}>
+                    <p style={{fontSize:"50px"}}>you should <Link to={"/login"}>login</Link> first</p>
+
+                  </div>
+                )}
+
+</div>
+              
               
     );
 }
